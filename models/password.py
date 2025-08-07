@@ -7,9 +7,9 @@ from functools import partial
 import secrets
 
 class PasswordBase(SQLModel):
-    encrypted_password: str
+    password: str
     expire_at: datetime
-    views_left: int = Field(default=1, ge=0, le=5)
+    views_left: int = Field(default=1)
 
 
 class Password(PasswordBase, table=True):
@@ -20,8 +20,8 @@ class Password(PasswordBase, table=True):
     
 class PasswordGen(SQLModel):
     size: int = Field(default=16)
-    numbers: bool | None = Field(default=True)
-    special_char: bool | None = Field(default=True)    
-    expire_at: datetime | None = Field(default=None)
-    views_left: int | None = Field(default=None)
+    numbers: bool = Field(default=True)
+    special_char: bool = Field(default=True)    
+    expire_at: datetime = Field(default=None)
+    views_left: int = Field(default=1)
 

@@ -5,7 +5,9 @@ from models import password
 from utils.database import Session, engine
 from functools import partial
 from routers import password_router
+from dotenv import load_dotenv
 
+load_dotenv()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

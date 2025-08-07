@@ -1,0 +1,42 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.env/
+
+# IDEs e editores
+.vscode/
+.idea/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos sensíveis
+.env
+*.key
+*.pem
+secret.json
+
+# Banco de dados local
+*.sqlite3
+*.db
+
+# Testes temporários
+*.log
+*.tmp
+test.py
+
+# Build
+dist/
+build/
+*.egg-info
+.pytest_cache/
+.tox/
+utils/__pycache__/encrypt.cpython-313.pyc
+repository/__pycache__/password_repo.cpython-313.pyc
+models/__pycache__/password.cpython-313.pyc
+__pycache__/main.cpython-313.pyc
