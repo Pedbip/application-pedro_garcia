@@ -40,3 +40,8 @@ utils/__pycache__/encrypt.cpython-313.pyc
 repository/__pycache__/password_repo.cpython-313.pyc
 models/__pycache__/password.cpython-313.pyc
 __pycache__/main.cpython-313.pyc
+utils/__pycache__/encrypt.cpython-313.pyc
+utils/__pycache__/database.cpython-313.pyc
+routers/__pycache__/password_router.cpython-313.pyc
+models/__pycache__/password.cpython-313.pyc
+__pycache__/main.cpython-313.pyc

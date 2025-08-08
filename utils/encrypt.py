@@ -1,9 +1,11 @@
 from cryptography.fernet import Fernet
 
-def encrypt_data(key, data: str):
+def encrypt_data(key, data: str) -> str:
     f = Fernet(key)
-    return f.encrypt(data.encode())
+    encrypted_bytes = f.encrypt(data.encode())
+    return encrypted_bytes.decode('utf-8')  # Converte bytes para string
 
-def decrypt_data(key, encrypted_data):
+def decrypt_data(key, encrypted_data: str) -> str:
     f = Fernet(key)
-    return f.decrypt(encrypted_data).decode()
+    encrypted_bytes = encrypted_data.encode('utf-8')  # Converte string para bytes
+    return f.decrypt(encrypted_bytes).decode()
