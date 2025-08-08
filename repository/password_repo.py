@@ -54,19 +54,19 @@ async def get_password_by_token(token: str, db: SessionDep):
     password = result.scalars().first()
 
     if not password:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Password not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Password Unavailable")
 
     current_time = datetime.now()
     if password.expire_at and password.expire_at < current_time:
         await db.delete(password)
         await db.commit()
-        raise HTTPException(status_code=status.HTTP_410_GONE, detail="Password has expired")
+        raise HTTPException(status_code=status.HTTP_410_GONE, detail="Password Unavailable")
 
     if password.views_left is not None:
         if password.views_left <= 0:
             await db.delete(password)
             await db.commit()
-            raise HTTPException(status_code=status.HTTP_410_GONE, detail="No views left")
+            raise HTTPException(status_code=status.HTTP_410_GONE, detail="Password Unavailable")
         elif password.views_left == 1:
             secret_key = os.getenv("SECRET_KEY")
             if not secret_key:
