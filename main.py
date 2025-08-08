@@ -1,8 +1,6 @@
 import logging
 import os
 
-logging.getLogger("sqlalchemy.engine").disabled = True
-logging.getLogger("sqlalchemy.pool").disabled = True
 if os.getenv("DISABLE_SQLALCHEMY_LOGS", "false").lower() == "true":
     logging.getLogger("sqlalchemy.engine").disabled = True
     logging.getLogger("sqlalchemy.pool").disabled = True
@@ -15,7 +13,6 @@ from contextlib import asynccontextmanager
 from models import audit_log as log
 from utils.database import async_session_maker
 from routers import password_router
-from dotenv import load_dotenv
 from datetime import datetime, timezone
 
 from fastapi.middleware.cors import CORSMiddleware
@@ -38,7 +35,7 @@ async def lifespan(app: FastAPI):
     await FastAPILimiter.init(r)
 
     yield
-    print("API sendo encerrada...")
+    logging.info("API sendo encerrada...")
 
 
 app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None)  
